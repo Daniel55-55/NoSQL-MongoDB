@@ -6,23 +6,27 @@
 
 ---
 
-## 📋 Descripción
+## 📋 ¿De qué trata este proyecto?
 
-Taller práctico que simula un sistema de ventas para un almacén usando MongoDB como base de datos NoSQL. Se implementan los modelos de datos **embebido** y **referenciado**, y se evidencia la flexibilidad de los documentos sin estructura fija.
+Taller práctico que simula un **sistema de ventas de un almacén** usando MongoDB como base de datos NoSQL. El proyecto demuestra tres conceptos clave:
+
+**Modelo Embebido:** el cliente se guarda *dentro* del documento del pedido. Como los datos del cliente no cambian frecuentemente, embeberlos permite leer todo en una sola consulta, sin joins.
+
+**Modelo Referenciado:** los productos viven en su propia colección. Los pedidos solo guardan el `producto_id`. Así, si el precio cambia, se actualiza en un solo lugar sin duplicar información.
+
+**Flexibilidad de esquema:** con `$set` se agregan campos nuevos (`garantia_extendida`, `observaciones`) a un solo documento sin afectar el resto de la colección — algo imposible de hacer limpiamente en SQL sin alterar toda la tabla.
 
 ---
 
 ## 🛠️ Requisitos previos
 
-Antes de clonar o descomprimir el proyecto, asegúrate de tener instalado:
-
-| Herramienta | Versión mínima | Descarga |
+| Herramienta | Para qué sirve | Descarga |
 |---|---|---|
-| Docker Desktop | Cualquier versión reciente | https://www.docker.com/products/docker-desktop |
-| VS Code | Cualquier versión reciente | https://code.visualstudio.com/ |
-| Extensión MongoDB for VS Code | — | Buscar en el marketplace de VS Code |
+| Docker Desktop | Ejecuta MongoDB sin instalarlo | https://www.docker.com/products/docker-desktop |
+| VS Code | Editor de código | https://code.visualstudio.com/ |
+| Extensión MongoDB for VS Code | Visualizar y ejecutar scripts | Marketplace de VS Code → buscar "MongoDB" |
 
-> **No necesitas instalar MongoDB** directamente. Docker lo ejecuta en un contenedor aislado.
+> **No necesitas instalar MongoDB.** Docker lo ejecuta en un contenedor aislado.
 
 ---
 
@@ -30,43 +34,32 @@ Antes de clonar o descomprimir el proyecto, asegúrate de tener instalado:
 
 ```
 taller-nosql-mongodb/
-├── arrancar_nosql.bat       ← Inicia MongoDB en Windows (doble clic)
-├── arrancar_nosql.sh        ← Inicia MongoDB en Mac/Linux
-├── docker-compose.yml       ← Configuración del contenedor MongoDB
+├── arrancar_nosql.bat           ← Inicia MongoDB en Windows (doble clic)
+├── arrancar_nosql.sh            ← Inicia MongoDB en Mac/Linux
+├── docker-compose.yml           ← Configuración del contenedor MongoDB 7
 ├── scripts/
-│   ├── 00_reset.js          ← Limpia la BD para empezar de cero
-│   ├── 01_script_taller.js  ← Crea la BD e inserta documentos
-│   └── 02_consultas_mongodb.js ← Consultas y modificaciones
+│   ├── 00_reset.js              ← Limpia la BD para volver a empezar
+│   ├── 01_script_taller.js      ← Crea la BD, inserta productos y pedidos
+│   └── 02_consultas_mongodb.js  ← Consultas, updates y demostración de flexibilidad
 └── README.md
 ```
 
 ---
 
-## 🚀 Paso a paso para ejecutar el taller
+## 🚀 Paso a paso — Ejecución local (PC con Docker Desktop)
 
-### 1. Clonar o descomprimir el proyecto
-
-**Opción A – Desde GitHub:**
+### 1. Clonar el repositorio
 ```bash
-git clone https://github.com/TU_USUARIO/taller-nosql-mongodb.git
-cd taller-nosql-mongodb
+git clone https://github.com/Daniel55-55/NoSQL-MongoDB.git
+cd NoSQL-MongoDB/taller-nosql-mongodb
 ```
 
-**Opción B – Desde el .zip:**
-Descomprime el archivo y abre la carpeta en VS Code.
-
----
-
-### 2. Iniciar Docker Desktop
-
-Abre **Docker Desktop** y espera a que el ícono en la barra de tareas deje de girar (estado: Running).
-
----
+### 2. Abrir Docker Desktop
+Espera a que el ícono en la barra de tareas quede estático (estado: Running).
 
 ### 3. Levantar MongoDB
 
-**Windows:** Haz doble clic en `arrancar_nosql.bat`  
-*(Si pide permisos de administrador, acéptalos)*
+**Windows:** doble clic en `arrancar_nosql.bat`
 
 **Mac / Linux:**
 ```bash
@@ -74,55 +67,98 @@ chmod +x arrancar_nosql.sh
 ./arrancar_nosql.sh
 ```
 
-Verás el mensaje:
+Verás:
 ```
 [OK] MongoDB disponible en: mongodb://localhost:27017
 ```
 
----
-
 ### 4. Conectar VS Code a MongoDB
-
-1. Abre VS Code
-2. En la barra lateral izquierda, haz clic en el ícono de hoja de MongoDB 🍃
-3. Haz clic en **"Add Connection"** o **"Connect"**
-4. Ingresa la cadena de conexión:
-   ```
-   mongodb://localhost:27017
-   ```
-5. Haz clic en **Connect**
-6. Deberías ver el servidor conectado y la opción de explorar bases de datos
-
----
+1. Clic en el ícono 🍃 en la barra lateral izquierda
+2. Clic en **Add Connection** → **Connect with Connection String**
+3. Escribe: `mongodb://localhost:27017`
+4. Presiona Enter — aparecerá el punto verde ✅
 
 ### 5. Ejecutar los scripts en orden
 
-Abre cada archivo en VS Code y usa el botón **"Run"** (▶) que aparece en la esquina superior derecha del editor MongoDB, o usa **"Run All"**:
+Abre cada archivo en VS Code y presiona **Ctrl + Shift + P** → `MongoDB: Run All From Playground`:
 
 | Orden | Archivo | Qué hace |
 |---|---|---|
-| 1️⃣ | `scripts/01_script_taller.js` | Crea la BD `AlmacenTaller`, inserta productos y pedidos |
-| 2️⃣ | `scripts/02_consultas_mongodb.js` | Ejecuta consultas, actualizaciones y demuestra la flexibilidad |
-| 🔄 | `scripts/00_reset.js` | Limpia todo para volver a empezar |
+| 1️⃣ | `scripts/01_script_taller.js` | Crea `AlmacenTaller`, inserta productos y pedidos |
+| 2️⃣ | `scripts/02_consultas_mongodb.js` | Ejecuta consultas y demuestra la flexibilidad |
+| 🔄 | `scripts/00_reset.js` | Limpia todo para empezar de cero |
+
+---
+
+## 🚀 Ejecución en GitHub Codespaces (sin Docker local)
+
+Si no tienes Docker Desktop instalado, puedes usar **GitHub Codespaces** directamente desde el navegador:
+
+### 1. Abrir Codespaces
+En GitHub → botón verde **Code** → **Codespaces** → **Create codespace on main**
+
+### 2. En la terminal del Codespace, entra a la carpeta correcta:
+```bash
+cd taller-nosql-mongodb
+```
+
+### 3. Levanta MongoDB:
+```bash
+docker-compose up -d
+```
+Verás: `✓ Container taller-nosql   Started`
+
+### 4. Conecta la extensión MongoDB
+- Clic en 🍃 → **Connect** → `mongodb://localhost:27017`
+
+### 5. Corre los scripts desde la terminal:
+```bash
+# Script 1 — Insertar datos
+docker exec -it taller-nosql mongosh --eval "
+  use('AlmacenTaller');
+  db.productos.insertMany([
+    {_id:'PROD01', nombre:'Laptop Gamer', precio:1500, stock:10, categoria:'Tecnologia'},
+    {_id:'PROD02', nombre:'Mouse Inalambrico', precio:45, stock:50, categoria:'Accesorios'},
+    {_id:'PROD03', nombre:'Teclado Mecanico', precio:120, stock:25, categoria:'Accesorios'}
+  ]);
+  db.pedidos.insertOne({
+    nro_factura:1001,
+    cliente:{nombre:'Juan Perez', tipo:'Premium', ciudad:'Bogota'},
+    items:[{producto_id:'PROD01', cantidad:1, subtotal:1500}],
+    total:1500, estado:'entregado'
+  });
+  print('Datos insertados OK');
+"
+```
+
+```bash
+# Verificar datos insertados
+docker exec -it taller-nosql mongosh --eval "
+  use('AlmacenTaller');
+  print('=== PRODUCTOS ===');
+  db.productos.find().forEach(p => printjson(p));
+  print('=== PEDIDOS ===');
+  db.pedidos.find().forEach(p => printjson(p));
+"
+```
 
 ---
 
 ## 🗂️ Modelo de datos
 
-### Colección `productos` – Modelo Referenciado
-
+### Colección `productos` — Modelo Referenciado
 ```json
 {
   "_id": "PROD01",
   "nombre": "Laptop Gamer",
+  "descripcion": "Laptop de alto rendimiento para gaming",
   "precio": 1500,
   "stock": 10,
   "categoria": "Tecnologia"
 }
 ```
 
-### Colección `pedidos` – Modelo Híbrido
-
+### Colección `pedidos` — Modelo Híbrido
 ```json
 {
   "nro_factura": 1001,
@@ -140,17 +176,18 @@ Abre cada archivo en VS Code y usa el botón **"Run"** (▶) que aparece en la e
 }
 ```
 
-> **Embebido:** el objeto `cliente` vive dentro del pedido (datos estáticos).  
-> **Referenciado:** `items` usa `producto_id` en lugar de duplicar los datos del producto (datos dinámicos como precio o stock).
+> **Embebido:** `cliente` vive dentro del pedido — consulta más rápida, sin joins.  
+> **Referenciado:** `items` usa `producto_id` — evita duplicar datos del producto.
 
 ---
 
 ## 💡 Conceptos demostrados
 
-- **Modelo embebido:** datos anidados dentro del mismo documento, consulta más rápida, menos operaciones.
-- **Modelo referenciado:** separación de datos mediante IDs, evita duplicación, facilita actualizaciones centralizadas.
-- **Flexibilidad de esquema:** el operador `$set` agrega campos a documentos individuales sin afectar el resto de la colección.
-- **Documentos heterogéneos:** cada documento puede tener campos distintos sin alterar el sistema.
+**Modelo embebido:** datos anidados en el mismo documento. Consulta más rápida, menos operaciones. Ideal para datos estáticos.
+
+**Modelo referenciado:** separación de datos mediante IDs. Evita duplicación y facilita actualizaciones centralizadas. Ideal para datos dinámicos.
+
+**Flexibilidad de esquema:** `$set` agrega campos a documentos individuales sin afectar el resto. Documentos heterogéneos sin alteración global — gran ventaja sobre SQL.
 
 ---
 
@@ -160,7 +197,7 @@ Abre cada archivo en VS Code y usa el botón **"Run"** (▶) que aparece en la e
 # Ver contenedores corriendo
 docker ps
 
-# Detener el contenedor
+# Detener MongoDB
 docker-compose down
 
 # Ver logs de MongoDB
@@ -174,14 +211,10 @@ docker-compose restart
 
 ## ❓ Solución de problemas
 
-**El contenedor no inicia:**
-- Verifica que Docker Desktop esté abierto y corriendo.
-- Asegúrate de que el puerto 27017 no esté en uso por otra instancia de MongoDB.
+**`no configuration file provided`:** Asegúrate de estar dentro de la carpeta `taller-nosql-mongodb/` antes de correr `docker-compose up -d`.
 
-**VS Code no conecta:**
-- Confirma que el contenedor está corriendo con `docker ps`.
-- Usa exactamente `mongodb://localhost:27017` como cadena de conexión.
+**El contenedor no inicia:** Verifica que Docker Desktop esté abierto. Revisa que el puerto 27017 no esté en uso con `docker ps`.
 
-**Error al ejecutar el script:**
-- Asegúrate de tener seleccionada la base de datos correcta (`AlmacenTaller`).
-- Ejecuta primero `00_reset.js` si ya existían datos previos.
+**VS Code no conecta:** Confirma que el contenedor está corriendo con `docker ps`. Usa exactamente `mongodb://localhost:27017`.
+
+**Error al ejecutar el script:** Si ya existían datos previos, corre primero `00_reset.js` para limpiar la BD.
