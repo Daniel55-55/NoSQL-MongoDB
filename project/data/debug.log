@@ -1,0 +1,109 @@
+[2026-04-30 17:34:22] [INFO] === EXTRACCION: Cargando JSON en MongoDB distribuido ===
+[2026-04-30 17:34:22] [INFO] JSON leidos: 10 personas, 10 articulos, 20 ventas
+[2026-04-30 17:34:22] [INFO]   localhost:27018/personas_db.personas → 10 documentos insertados
+[2026-04-30 17:34:22] [INFO]   localhost:27017/articulos_db.articulos → 10 documentos insertados
+[2026-04-30 17:34:22] [INFO]   localhost:27019/ventas_db.ventas → 20 documentos insertados
+[2026-04-30 17:34:22] [INFO] Carga completada en 0.09s — personas:10, articulos:10, ventas:20
+[2026-04-30 17:34:22] [INFO] Verificar con: GET /mongo/personas | /mongo/articulos | /mongo/ventas
+[2026-04-30 17:34:30] [INFO] ==================================================
+[2026-04-30 17:34:30] [INFO]   ETL: MongoDB → almacen.sqlite
+[2026-04-30 17:34:30] [INFO] ==================================================
+[2026-04-30 17:34:30] [INFO] === FASE EXTRACCION ===
+[2026-04-30 17:34:30] [INFO]   GET localhost:27018/personas_db.personas → 10 documentos OK
+[2026-04-30 17:34:30] [INFO]   GET localhost:27017/articulos_db.articulos → 10 documentos OK
+[2026-04-30 17:34:30] [INFO]   GET localhost:27019/ventas_db.ventas → 20 documentos OK
+[2026-04-30 17:34:30] [INFO] Extraccion completada en 0.03s
+[2026-04-30 17:34:30] [INFO] === FASE TRANSFORMACION ===
+[2026-04-30 17:34:30] [INFO] Transformacion: 10 personas, 10 articulos, 20 ventas
+[2026-04-30 17:34:30] [INFO] Registros rechazados: 0 | Tiempo: 0.00s
+[2026-04-30 17:34:30] [INFO] === FASE CARGA (SQLite) ===
+[2026-04-30 17:34:30] [INFO]   LOAD personas:  10 registros
+[2026-04-30 17:34:30] [INFO]   LOAD articulos: 10 registros
+[2026-04-30 17:34:30] [INFO]   LOAD ventas:    20 registros
+[2026-04-30 17:34:30] [INFO] SQLite guardado en: /workspaces/NoSQL-MongoDB/project/data/almacen.sqlite | Tiempo: 0.02s
+[2026-04-30 17:34:30] [INFO] === VERIFICACION FINAL ===
+[2026-04-30 17:34:30] [INFO]   personas: 10 registros ✓
+[2026-04-30 17:34:30] [INFO]   articulos: 10 registros ✓
+[2026-04-30 17:34:30] [INFO]   ventas: 20 registros ✓
+[2026-04-30 17:34:30] [INFO]   Top 3 articulos mas vendidos: [('Mouse Logitech MX Ma', 10), ('Laptop Gamer ASUS RO', 7), ('Monitor Samsung 27', 5)]
+[2026-04-30 17:34:30] [INFO] ETL completado exitosamente ✓
+[2026-04-30 17:36:13] [INFO] === EXTRACCION: Cargando JSON en MongoDB distribuido ===
+[2026-04-30 17:36:13] [INFO] JSON leidos: 10 personas, 10 articulos, 20 ventas
+[2026-04-30 17:36:13] [INFO]   localhost:27018/personas_db.personas → 10 documentos insertados
+[2026-04-30 17:36:13] [INFO]   localhost:27017/articulos_db.articulos → 10 documentos insertados
+[2026-04-30 17:36:13] [INFO]   localhost:27019/ventas_db.ventas → 20 documentos insertados
+[2026-04-30 17:36:13] [INFO] Carga completada en 0.20s — personas:10, articulos:10, ventas:20
+[2026-04-30 17:36:13] [INFO] Verificar con: GET /mongo/personas | /mongo/articulos | /mongo/ventas
+[2026-04-30 17:36:18] [INFO] ==================================================
+[2026-04-30 17:36:18] [INFO]   ETL: MongoDB → almacen.sqlite
+[2026-04-30 17:36:18] [INFO] ==================================================
+[2026-04-30 17:36:18] [INFO] === FASE EXTRACCION ===
+[2026-04-30 17:36:18] [INFO]   GET localhost:27018/personas_db.personas → 10 documentos OK
+[2026-04-30 17:36:18] [INFO]   GET localhost:27017/articulos_db.articulos → 10 documentos OK
+[2026-04-30 17:36:18] [INFO]   GET localhost:27019/ventas_db.ventas → 20 documentos OK
+[2026-04-30 17:36:18] [INFO] Extraccion completada en 0.05s
+[2026-04-30 17:36:18] [INFO] === FASE TRANSFORMACION ===
+[2026-04-30 17:36:18] [INFO] Transformacion: 10 personas, 10 articulos, 20 ventas
+[2026-04-30 17:36:18] [INFO] Registros rechazados: 0 | Tiempo: 0.00s
+[2026-04-30 17:36:18] [INFO] === FASE CARGA (SQLite) ===
+[2026-04-30 17:36:18] [INFO]   LOAD personas:  10 registros
+[2026-04-30 17:36:18] [INFO]   LOAD articulos: 10 registros
+[2026-04-30 17:36:18] [INFO]   LOAD ventas:    20 registros
+[2026-04-30 17:36:18] [INFO] SQLite guardado en: /workspaces/NoSQL-MongoDB/project/data/almacen.sqlite | Tiempo: 0.03s
+[2026-04-30 17:36:18] [INFO] === VERIFICACION FINAL ===
+[2026-04-30 17:36:18] [INFO]   personas: 10 registros ✓
+[2026-04-30 17:36:18] [INFO]   articulos: 10 registros ✓
+[2026-04-30 17:36:18] [INFO]   ventas: 20 registros ✓
+[2026-04-30 17:36:18] [INFO]   Top 3 articulos mas vendidos: [('Mouse Logitech MX Ma', 10), ('Laptop Gamer ASUS RO', 7), ('Monitor Samsung 27', 5)]
+[2026-04-30 17:36:18] [INFO] ETL completado exitosamente ✓
+[2026-04-30 17:46:11] [INFO] ==================================================
+[2026-04-30 17:46:11] [INFO]   ETL: MongoDB → almacen.sqlite
+[2026-04-30 17:46:11] [INFO] ==================================================
+[2026-04-30 17:46:11] [INFO] === FASE EXTRACCION ===
+[2026-04-30 17:46:11] [INFO]   GET localhost:27018/personas_db.personas → 10 documentos OK
+[2026-04-30 17:46:11] [INFO]   GET localhost:27017/articulos_db.articulos → 10 documentos OK
+[2026-04-30 17:46:11] [INFO]   GET localhost:27019/ventas_db.ventas → 20 documentos OK
+[2026-04-30 17:46:11] [INFO] Extraccion completada en 0.04s
+[2026-04-30 17:46:11] [INFO] === FASE TRANSFORMACION ===
+[2026-04-30 17:46:11] [INFO] Transformacion: 10 personas, 10 articulos, 20 ventas
+[2026-04-30 17:46:11] [INFO] Registros rechazados: 0 | Tiempo: 0.00s
+[2026-04-30 17:46:11] [INFO] === FASE CARGA (SQLite) ===
+[2026-04-30 17:46:11] [INFO]   LOAD personas:  10 registros
+[2026-04-30 17:46:11] [INFO]   LOAD articulos: 10 registros
+[2026-04-30 17:46:11] [INFO]   LOAD ventas:    20 registros
+[2026-04-30 17:46:11] [INFO] SQLite guardado en: /workspaces/NoSQL-MongoDB/project/data/almacen.sqlite | Tiempo: 0.03s
+[2026-04-30 17:46:11] [INFO] === VERIFICACION FINAL ===
+[2026-04-30 17:46:11] [INFO]   personas: 10 registros ✓
+[2026-04-30 17:46:11] [INFO]   articulos: 10 registros ✓
+[2026-04-30 17:46:11] [INFO]   ventas: 20 registros ✓
+[2026-04-30 17:46:11] [INFO]   Top 3 articulos mas vendidos: [('Mouse Logitech MX Ma', 10), ('Laptop Gamer ASUS RO', 7), ('Monitor Samsung 27', 5)]
+[2026-04-30 17:46:11] [INFO] ETL completado exitosamente ✓
+[2026-04-30 17:57:33] [INFO] === EXTRACCION: Cargando JSON en MongoDB distribuido ===
+[2026-04-30 17:57:33] [INFO] JSON leidos: 10 personas, 10 articulos, 20 ventas
+[2026-04-30 17:57:34] [INFO]   localhost:27018/personas_db.personas → 10 documentos insertados
+[2026-04-30 17:57:34] [INFO]   localhost:27017/articulos_db.articulos → 10 documentos insertados
+[2026-04-30 17:57:34] [INFO]   localhost:27019/ventas_db.ventas → 20 documentos insertados
+[2026-04-30 17:57:34] [INFO] Carga completada en 0.40s — personas:10, articulos:10, ventas:20
+[2026-04-30 17:57:34] [INFO] Verificar con: GET /mongo/personas | /mongo/articulos | /mongo/ventas
+[2026-04-30 17:57:54] [INFO] ==================================================
+[2026-04-30 17:57:54] [INFO]   ETL: MongoDB → almacen.sqlite
+[2026-04-30 17:57:54] [INFO] ==================================================
+[2026-04-30 17:57:54] [INFO] === FASE EXTRACCION ===
+[2026-04-30 17:57:54] [INFO]   GET localhost:27018/personas_db.personas → 10 documentos OK
+[2026-04-30 17:57:54] [INFO]   GET localhost:27017/articulos_db.articulos → 10 documentos OK
+[2026-04-30 17:57:54] [INFO]   GET localhost:27019/ventas_db.ventas → 20 documentos OK
+[2026-04-30 17:57:54] [INFO] Extraccion completada en 0.04s
+[2026-04-30 17:57:54] [INFO] === FASE TRANSFORMACION ===
+[2026-04-30 17:57:54] [INFO] Transformacion: 10 personas, 10 articulos, 20 ventas
+[2026-04-30 17:57:54] [INFO] Registros rechazados: 0 | Tiempo: 0.00s
+[2026-04-30 17:57:54] [INFO] === FASE CARGA (SQLite) ===
+[2026-04-30 17:57:54] [INFO]   LOAD personas:  10 registros
+[2026-04-30 17:57:54] [INFO]   LOAD articulos: 10 registros
+[2026-04-30 17:57:54] [INFO]   LOAD ventas:    20 registros
+[2026-04-30 17:57:54] [INFO] SQLite guardado en: /workspaces/NoSQL-MongoDB/project/data/almacen.sqlite | Tiempo: 0.03s
+[2026-04-30 17:57:54] [INFO] === VERIFICACION FINAL ===
+[2026-04-30 17:57:54] [INFO]   personas: 10 registros ✓
+[2026-04-30 17:57:54] [INFO]   articulos: 10 registros ✓
+[2026-04-30 17:57:54] [INFO]   ventas: 20 registros ✓
+[2026-04-30 17:57:54] [INFO]   Top 3 articulos mas vendidos: [('Mouse Logitech MX Ma', 10), ('Laptop Gamer ASUS RO', 7), ('Monitor Samsung 27', 5)]
+[2026-04-30 17:57:54] [INFO] ETL completado exitosamente ✓
