@@ -1,0 +1,12 @@
+[
+  { "idArticulo": 1, "nombreArticulo": "Laptop Gamer ASUS ROG",       "cantidadArticulo": 8  },
+  { "idArticulo": 2, "nombreArticulo": "Laptop Dell XPS 15",           "cantidadArticulo": 12 },
+  { "idArticulo": 3, "nombreArticulo": "MacBook Air M2",               "cantidadArticulo": 15 },
+  { "idArticulo": 4, "nombreArticulo": "Monitor LG UltraWide 34",      "cantidadArticulo": 20 },
+  { "idArticulo": 5, "nombreArticulo": "Monitor Samsung 27",           "cantidadArticulo": 30 },
+  { "idArticulo": 6, "nombreArticulo": "Mouse Logitech MX Master 3",   "cantidadArticulo": 50 },
+  { "idArticulo": 7, "nombreArticulo": "Mouse Razer DeathAdder",       "cantidadArticulo": 45 },
+  { "idArticulo": 8, "nombreArticulo": "Teclado Corsair K70",          "cantidadArticulo": 25 },
+  { "idArticulo": 9, "nombreArticulo": "Teclado Logitech G915",        "cantidadArticulo": 18 },
+  { "idArticulo": 10, "nombreArticulo": "Auriculares Sony WH-1000XM5", "cantidadArticulo": 22 }
+]

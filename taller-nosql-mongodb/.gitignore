@@ -1,9 +1,0 @@
-# Docker volumes
-mongo_data/
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# VS Code settings (opcional, puedes quitarlo si quieres compartir settings)
-.vscode/

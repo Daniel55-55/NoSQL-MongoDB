@@ -1,0 +1,12 @@
+[
+  { "numeroDocumento": 1001, "nombre": "Juan Perez",       "telefono": 3001234567 },
+  { "numeroDocumento": 1002, "nombre": "Maria Lopez",      "telefono": 3109876543 },
+  { "numeroDocumento": 1003, "nombre": "Carlos Ramirez",   "telefono": 3154567890 },
+  { "numeroDocumento": 1004, "nombre": "Ana Torres",       "telefono": 3207654321 },
+  { "numeroDocumento": 1005, "nombre": "Luis Herrera",     "telefono": 3012345678 },
+  { "numeroDocumento": 1006, "nombre": "Valentina Gomez",  "telefono": 3156789012 },
+  { "numeroDocumento": 1007, "nombre": "Santiago Moreno",  "telefono": 3001112233 },
+  { "numeroDocumento": 1008, "nombre": "Camila Vargas",    "telefono": 3204445566 },
+  { "numeroDocumento": 1009, "nombre": "Andres Castro",    "telefono": 3118889900 },
+  { "numeroDocumento": 1010, "nombre": "Isabella Rios",    "telefono": 3167778899 }
+]

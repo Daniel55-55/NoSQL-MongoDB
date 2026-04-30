@@ -1,0 +1,22 @@
+[
+  { "idComprador": 1001, "idArticulo": 1,  "cantidadProductos": 1 },
+  { "idComprador": 1001, "idArticulo": 6,  "cantidadProductos": 2 },
+  { "idComprador": 1002, "idArticulo": 3,  "cantidadProductos": 1 },
+  { "idComprador": 1003, "idArticulo": 2,  "cantidadProductos": 3 },
+  { "idComprador": 1003, "idArticulo": 4,  "cantidadProductos": 3 },
+  { "idComprador": 1004, "idArticulo": 10, "cantidadProductos": 1 },
+  { "idComprador": 1005, "idArticulo": 8,  "cantidadProductos": 2 },
+  { "idComprador": 1006, "idArticulo": 9,  "cantidadProductos": 1 },
+  { "idComprador": 1007, "idArticulo": 1,  "cantidadProductos": 5 },
+  { "idComprador": 1007, "idArticulo": 5,  "cantidadProductos": 5 },
+  { "idComprador": 1008, "idArticulo": 7,  "cantidadProductos": 2 },
+  { "idComprador": 1009, "idArticulo": 2,  "cantidadProductos": 1 },
+  { "idComprador": 1009, "idArticulo": 4,  "cantidadProductos": 1 },
+  { "idComprador": 1010, "idArticulo": 6,  "cantidadProductos": 3 },
+  { "idComprador": 1001, "idArticulo": 3,  "cantidadProductos": 2 },
+  { "idComprador": 1002, "idArticulo": 8,  "cantidadProductos": 1 },
+  { "idComprador": 1005, "idArticulo": 1,  "cantidadProductos": 1 },
+  { "idComprador": 1006, "idArticulo": 10, "cantidadProductos": 2 },
+  { "idComprador": 1003, "idArticulo": 6,  "cantidadProductos": 5 },
+  { "idComprador": 1004, "idArticulo": 9,  "cantidadProductos": 1 }
+]

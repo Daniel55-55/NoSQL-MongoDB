@@ -1,0 +1,33 @@
+services:
+
+  mongodb_personas:
+    image: mongo:7
+    container_name: mongodb_personas
+    restart: unless-stopped
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo_personas:/data/db
+
+  mongodb_articulos:
+    image: mongo:7
+    container_name: mongodb_articulos
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_articulos:/data/db
+
+  mongodb_ventas:
+    image: mongo:7
+    container_name: mongodb_ventas
+    restart: unless-stopped
+    ports:
+      - "27019:27017"
+    volumes:
+      - mongo_ventas:/data/db
+
+volumes:
+  mongo_personas:
+  mongo_articulos:
+  mongo_ventas:
