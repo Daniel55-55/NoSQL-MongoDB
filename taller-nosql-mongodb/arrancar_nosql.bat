@@ -26,7 +26,16 @@ echo.
 echo [OK] Contenedor iniciado correctamente.
 echo [OK] MongoDB disponible en: mongodb://localhost:27017
 echo.
-echo Ahora abre VS Code y conectate usando la extension de MongoDB.
+
+:: Espera 3 segundos para que MongoDB termine de iniciar
+timeout /t 3 >nul
+
+:: Abre VS Code en la carpeta del proyecto
+echo [INFO] Abriendo VS Code...
+code .
+
+echo.
+echo Conectate en VS Code usando la extension de MongoDB (hoja verde).
 echo Cadena de conexion: mongodb://localhost:27017
 echo.
 pause

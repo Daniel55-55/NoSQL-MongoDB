@@ -151,3 +151,9 @@ docker-compose restart       # Reiniciar
 | `No such file or directory` al correr scripts | Estás dentro de `scripts/` — ejecuta `cd ..` primero |
 | VS Code no conecta | Confirma con `docker ps` que el contenedor está corriendo |
 | Error al insertar datos duplicados | Corre primero `00_reset.js` para limpiar la BD |
+
+Verifica que Docker esté corriendo
+Levanta MongoDB en el puerto 27017
+Espera 3 segundos
+Abre VS Code en la carpeta
+Te muestra la cadena de conexión
