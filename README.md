@@ -56,7 +56,8 @@ En GitHub → botón verde **Code** → **Codespaces** → **Create codespace on
 ### Paso 2 — Entrar a la carpeta del proyecto
 
 ```bash
-cd project
+cd NoSQL-MongoDB/project
+docker compose up -d
 ```
 
 > ⚠️ Si ves `no configuration file provided` es porque no entraste a esta carpeta.
@@ -164,6 +165,10 @@ pip install jupyter matplotlib pandas --break-system-packages
 cp notebooks/.ipynb_checkpoints/proyectoBDM-checkpoint.ipynb notebooks/proyectoBDM.ipynb
 jupyter notebook notebooks/proyectoBDM.ipynb
 ```
+Si no funciona ingresa el siguente comando 
+mkdir -p notebooks
+cp /workspaces/NoSQL-MongoDB/project/notebooks/proyectoBDM.ipynb notebooks/
+jupyter notebook notebooks/proyectoBDM.ipynb
 
 Copia el token que aparece en la terminal y pégalo en el navegador. El notebook abre directo con las gráficas listas para ejecutar.
 
