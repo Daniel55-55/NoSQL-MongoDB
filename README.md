@@ -66,7 +66,7 @@ cd project
 ### Paso 3 — Levantar los 3 contenedores MongoDB
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 Verificar que estén corriendo:
@@ -100,7 +100,7 @@ python scripts/01_cargar_json_mongo.py
 
 Resultado esperado:
 ```
-localhost:27018/personas_db.personas  → 10 documentos insertados
+localhost:27018/personas_db.personas   → 10 documentos insertados
 localhost:27017/articulos_db.articulos → 10 documentos insertados
 localhost:27019/ventas_db.ventas       → 20 documentos insertados
 ```
@@ -140,8 +140,6 @@ ETL completado exitosamente ✓
 python scripts/03_consultas_sqlite.py
 ```
 
-Esto ejecuta 16 consultas SQL sobre `almacen.sqlite` incluyendo SELECT, WHERE, JOIN, GROUP BY, COUNT, SUM, LEFT JOIN con COALESCE y EXPLAIN QUERY PLAN.
-
 ---
 
 ### Paso 8 — Ver datos en MongoDB (opcional)
@@ -163,26 +161,17 @@ docker exec -it mongodb_ventas mongosh --eval "use('ventas_db'); db.ventas.find(
 
 ```bash
 pip install jupyter matplotlib pandas --break-system-packages
+cp notebooks/.ipynb_checkpoints/proyectoBDM-checkpoint.ipynb notebooks/proyectoBDM.ipynb
 jupyter notebook notebooks/proyectoBDM.ipynb
 ```
 
-Abre la URL que aparece en la terminal con el token, por ejemplo:
-```
-http://localhost:8888/?token=abc123...
-```
+Copia el token que aparece en la terminal y pégalo en el navegador. El notebook abre directo con las gráficas listas para ejecutar.
 
-En el notebook reemplaza la primera línea con la ruta correcta:
-```python
-SQLITE_PATH = '../data/almacen.sqlite'
-```
-
-Luego: **Kernel → Restart** → **Ejecutar todo**
-
-El notebook genera 4 visualizaciones:
+Clic en **Ejecutar todo** ▶▶ — genera 4 visualizaciones:
 1. Vista de las 3 tablas (personas, articulos, ventas)
 2. Top 5 artículos más vendidos — barras verticales
 3. Top 5 artículos menos vendidos — barras horizontales (LEFT JOIN + COALESCE)
-4. Top 5 compradores con más compras — barras
+4. Top 5 compradores con más compras
 5. Histograma de distribución de ventas
 
 ---
@@ -200,6 +189,8 @@ El notebook genera 4 visualizaciones:
 5. Carga los JSON en MongoDB
 6. Ejecuta el ETL → genera `data/almacen.sqlite`
 7. Abre VS Code
+
+> ⚠️ Si sale error `docker-compose no reconocido` usa el comando manual: `docker compose up -d` (sin guion). Las versiones nuevas de Docker Desktop usan `docker compose` en lugar de `docker-compose`.
 
 ---
 
@@ -293,10 +284,10 @@ LIMIT 5
 
 ```bash
 docker ps                          # Ver los 3 contenedores
-docker-compose up -d               # Iniciar todos
-docker-compose down                # Detener todos
+docker compose up -d               # Iniciar todos
+docker compose down                # Detener todos
 docker logs mongodb_personas       # Ver logs
-docker-compose restart             # Reiniciar
+docker compose restart             # Reiniciar
 ```
 
 ---
@@ -305,9 +296,10 @@ docker-compose restart             # Reiniciar
 
 | Error | Solución |
 |---|---|
-| `no configuration file provided` | Ejecuta `cd project` antes de `docker-compose up -d` |
+| `no configuration file provided` | Ejecuta `cd project` antes de `docker compose up -d` |
+| `docker-compose no reconocido` | Usa `docker compose` (sin guion) — versiones nuevas de Docker |
 | `No such file or directory` al correr scripts | Estás en `scripts/` — ejecuta `cd ..` primero |
 | `Connection refused` en el ETL | Verifica con `docker ps` que los 3 contenedores estén corriendo |
 | `ModuleNotFoundError: pymongo` | `pip install pymongo --break-system-packages` |
-| `almacen.sqlite not found` en notebook | Cambia la ruta a `'../data/almacen.sqlite'` en la primera celda |
-| `FileNotFoundError` en notebook | Ejecuta primero el paso 6 (`02_etl_mongo_sqlite.py`) |
+| Jupyter muestra carpeta vacía | El notebook está en `.ipynb_checkpoints/` — ejecuta el paso 9 completo |
+| `almacen.sqlite not found` en notebook | Ejecuta primero el paso 6 (`02_etl_mongo_sqlite.py`) |
